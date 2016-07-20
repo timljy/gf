@@ -6,7 +6,7 @@
 	,nl = '\n'
 	,zc = ['color:#000000','color:#307730','color:#AAAAAA','color:white; background-color:#77A8F3','color:white; background-color:#0055CC','color:white; background-color:#B03939']
 	,sout = function(inf,sty){if(!av.是否在控制台输出信息){sout=function(){};return}console.info('%c'+inf,zc[~~sty])}
-	,tp = function(sel){$(sel).trigger('touchStart');$(sel).trigger('tap');$(sel).trigger('touchend');}
+	,tp = function(sel){$(sel).trigger('touchStart');$(sel).trigger('tap');}
 	,tz = function(sel){var _=$('div',sel),__=_.size()-1,___=0;_.each(function(i,____){___+=~~____.className.split('_')[1]*Math.pow(10,__-i)});return ___}
 	,ce = function(en){$('#canv').trigger(en)}
 	,ce2 = function(b){exportRoot["card_" + b + "_select"]=1}
@@ -446,7 +446,7 @@
 				允许一站到底:true,
 				本钱大于多少后开始一站到底:50000,
 				样本收集多少份才允许一站到底:30,
-				点击动作延迟几秒:1.5,
+				点击动作延迟几秒:4,
 				随机增加的延迟秒数:1,
 				自动值守不超过几小时:3.5,
 				自动值守停止后休息几小时再继续值守:0.5,
@@ -464,9 +464,9 @@
 				允许一站到底:true,
 				本钱大于多少后开始一站到底:50000,
 				样本收集多少份才允许一站到底:30,
-				点击动作延迟几秒:2,
+				点击动作延迟几秒:4,
 				随机增加的延迟秒数:2,
-				自动值守不超过几小时:3,
+				自动值守不超过几小时:2,
 				自动值守停止后休息几小时再继续值守:1.5,
 				随机增加的休息小时数:1.5
 			}
