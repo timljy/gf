@@ -6,7 +6,7 @@
 	,nl = '\n'
 	,zc = ['color:#000000','color:#307730','color:#AAAAAA','color:white; background-color:#77A8F3','color:white; background-color:#0055CC','color:white; background-color:#B03939']
 	,sout = function(inf,sty){if(!av.是否在控制台输出信息){sout=function(){};return}console.info('%c'+inf,zc[~~sty])}
-	,tp = function(sel){$(sel).trigger(tap');}
+	,tp = function(sel){$(sel).trigger('tap');}
 	,tz = function(sel){var _=$('div',sel),__=_.size()-1,___=0;_.each(function(i,____){___+=~~____.className.split('_')[1]*Math.pow(10,__-i)});return ___}
 	,ce = function(en){$('#canv').trigger(en)}
 	,ce2 = function(b){exportRoot["card_" + b + "_select"]=1}
