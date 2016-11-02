@@ -6,7 +6,67 @@
 	,nl = '\n'
 	,zc = ['color:#000000','color:#307730','color:#AAAAAA','color:white; background-color:#77A8F3','color:white; background-color:#0055CC','color:white; background-color:#B03939']
 	,sout = function(inf,sty){if(!av.是否在控制台输出信息){sout=function(){};return}console.info('%c'+inf,zc[~~sty])}
-	,tp = function(sel){$(sel).trigger('tap');}
+	,sleep = function(a) {
+		return new Promise(function(b) {
+			setTimeout(function() {
+				b()
+			}, 1000 * a)
+		}.bind(this))
+	}
+	,bi = function(sel) {
+		sel = $(sel);
+		var e, o = $(document.documentElement).css('zoom'),
+			n = {
+				x: 0x0,
+				y: 0x0,
+				w: 0x0,
+				h: 0x0
+			},
+			a = sel.parents();
+		if (n.w = sel.innerWidth() * o, n.h = sel.innerHeight() * o, a.is(document.body))
+			for (var s = sel; s[0x0] != document.body; s = s.parent()) e = s.position(), n.y = n.y + e.top * o, n.x = n.x + e.left * o;
+		return n
+	}
+	,tp = function(sel) {
+		var btninfo = bi(sel),
+			btn = $(sel),
+			tx = Math.round(btninfo.x + Math.random() * btninfo.w),
+			ty = Math.round(btninfo.y + Math.random() * btninfo.h),
+			eventPro = {
+				view: window,
+				bubbles: true,
+				clientX: tx,
+				clientY: ty,
+				offsetX: tx,
+				offsetY: ty,
+				pageX: tx,
+				pageY: ty,
+				screenX: tx + 50,
+				screenY: ty,
+				cancelable: true,
+				x: tx,
+				y: ty
+			},
+			tpe = new MouseEvent('tap', {
+				view: window,
+				bubbles: true,
+				clientX: tx,
+				clientY: ty,
+				cancelable: true
+			}),
+			oevd = new MouseEvent("mousedown"),
+			oevu = new MouseEvent("mouseup"),
+			evd = $.Event(oevd, eventPro),
+			evu = $.Event(oevu, eventPro);
+
+		sleep(0.01).then(function() {
+			btn.trigger(evd)
+		}.bind(this)).then(function() {
+			return sleep(0.01)
+		}.bind(this)).then(function() {
+			btn.trigger(evu)
+		}.bind(this));
+	}
 	,tz = function(sel){var _=$('div',sel),__=_.size()-1,___=0;_.each(function(i,____){___+=~~____.className.split('_')[1]*Math.pow(10,__-i)});return ___}
 	,ce = function(en){$('#canv').trigger(en)}
 	,ce2 = function(b){exportRoot["card_" + b + "_select"]=1}
@@ -252,7 +312,7 @@
 			}
 			var slt=av.模式设定[md.pf].点击动作延迟几秒+Math.random()*av.模式设定[md.pf].随机增加的延迟秒数;
 			sout('Relax! 我只睡'+Math.round(slt*10)/10+'秒',2);
-			$('.btn-usual-ok:visible').trigger('tap');
+			// $('.btn-usual-ok:visible').trigger('tap');
 			za=setTimeout(caf,slt*1000)
 		},
 		deck:function(){
