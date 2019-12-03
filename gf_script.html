@@ -1,0 +1,37 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<body>
+
+hello world
+<br>
+<br>
+<font size = 6>Poker</font>
+<br>
+<pre><code class="language-pascal">
+if(/casino\/game\/poker/i.test(location.hash)){
+	var s = document.createElement('script');
+	var u = 'https://timljy.github.io/gf/org1.js';
+	var t = "function mp(){var s=document.createElement('script');s.onerror=function(){location.reload()};s.src='"+u+"';document.body.appendChild(s)};function sb(){if(window.$ && !$('#ready').is(':visible')){setTimeout(mp,3000);console.info('别急，很快就要开始了。')}else{setTimeout(function(){sb()},1000)}}sb()";
+	s.innerHTML = t;
+	document.body.appendChild(s);
+}
+</code></pre>
+
+<br>
+<font size = 6>Bingo</font>
+<br>
+<pre><code class="language-pascal">
+if(/casino\/game\/bingo/i.test(location.hash)){
+	var s = document.createElement('script');
+	var u = 'http://timljy.github.io/gf/bingo.js';
+	if(require && require.specified('util/ob')){
+    $('body').off('mousedown mouseup touchstart touchend tap');
+	}
+	var t = "function mp(){var s=document.createElement('script');s.onerror=function(){location.reload()};s.src='"+u+"';document.body.appendChild(s)};function sb(){if(window.$ && !$('#ready').is(':visible')){setTimeout(mp,3000);console.info('请稍后。')}else{setTimeout(function(){sb()},1000)}}sb()";
+	s.innerHTML = t;
+	document.body.appendChild(s);
+}
+
+</code></pre>
+</body>
+</html>
