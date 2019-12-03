@@ -1,24 +1,57 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <body>
-<code>
-        import RPi.GPIO as GPIO  #GPIOにアクセスするライブラリをimportします。                                          
-        import time
+<h3>LEDを点灯させるプログラム python用</h3>
+<br>
+import RPi.GPIO as GPIO<br>                                      
+import time<br>
+<br>  
+GPIO.setmode(GPIO.BCM)  #GPIOへアクセスする番号をBCMの番号で指定することを宣言します。<br>                        
+GPIO.setup(15,GPIO.OUT) #BCMの15番ピン、物理的には10番ピンを出力に設定します。<br>                                
+GPIO.setup(2,GPIO.IN)   #BCM 2番ピンを入力に設定します。 <br>                                                     
         
+try:<br>
+    while True:<br>
+        if GPIO.input(2) == GPIO.LOW:<br>
+            GPIO.output(15,GPIO.HIGH)<br>
+        else:<br>
+            GPIO.output(15,GPIO.LOW)<br>
+            time.sleep(0.1)<br>
+except KeyboardInterrupt:<br>
+    GPIO.cleanup()<br>
+<br>
+参考<br>
+<a href="https://qiita.com/maoutokagura/items/9aef5e23167ce2bc1d10">Raspberry Pi のGPIOをPythonから利用する</a>
+
+<br>
+<br>
+<br>
+<h3>LEDを点灯させるプログラム C 用</h3><br>
+#include <stdio.h><br>
+#include <wiringPi.h><br>
+<br>
+int main(int argc, char** argv)<br>
+{<br>
+   // Intialize the wiringPi Library<br>
+    wiringPiSetup();<br>
+<br>
+    // Set the I/O state of the given pins<br>
+    pinMode(0, OUTPUT);<br>
+    pinMode(1, INPUT);<br>
         
-        GPIO.setmode(GPIO.BCM)  #GPIOへアクセスする番号をBCMの番号で指定することを宣言します。                        
-        GPIO.setup(15,GPIO.OUT) #BCMの15番ピン、物理的には10番ピンを出力に設定します。                                
-        GPIO.setup(2,GPIO.IN)   #BCM 2番ピンを入力に設定します。                                                      
+    // Turn pin 0 on then off<br>
+    digitalWrite(0, HIGH);<br>
+    digitalWrite(0, LOW);<br>
         
-        try:
-                while True:
-                        if GPIO.input(2) == GPIO.LOW:
-                                GPIO.output(15,GPIO.HIGH)
-                        else:
-                                GPIO.output(15,GPIO.LOW)
-                        time.sleep(0.1)
-        except KeyboardInterrupt:
-                GPIO.cleanup()
-</code>>
+    // Read input from pin 1<br>
+    int status = digitalRead(1);<br>
+    printf("Pin Input = %d\n", status);<br>
+<br>
+    // Exit program<br>
+    return 0;<br>
+}<br>
+<br>
+参考<br>
+<a href="https://nickcullen.net/blog/raspberry-pi-tutorials/compiling-linking-wiringpi/">[ Raspberry Pi C ++] GPIO Access : Compiling, Linking & Using WiringPi</a>
 </body>
 </html>
