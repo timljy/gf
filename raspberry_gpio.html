@@ -11,14 +11,14 @@ GPIO.setup(15,GPIO.OUT) #BCMの15番ピン、物理的には10番ピンを出力
 GPIO.setup(2,GPIO.IN)   #BCM 2番ピンを入力に設定します。 <br>                                                     
         
 try:<br>
-    while True:<br>
-        if GPIO.input(2) == GPIO.LOW:<br>
-            GPIO.output(15,GPIO.HIGH)<br>
-        else:<br>
-            GPIO.output(15,GPIO.LOW)<br>
-            time.sleep(0.1)<br>
+&emsp;while True:<br>
+&emsp;&emsp;if GPIO.input(2) == GPIO.LOW:<br>
+&emsp;&emsp;&emsp;GPIO.output(15,GPIO.HIGH)<br>
+&emsp;&emsp;else:<br>
+&emsp;&emsp;&emsp;GPIO.output(15,GPIO.LOW)<br>
+&emsp;&emsp;time.sleep(0.1)<br>
 except KeyboardInterrupt:<br>
-    GPIO.cleanup()<br>
+&emsp;GPIO.cleanup()<br>
 <br>
 参考<br>
 <a href="https://qiita.com/maoutokagura/items/9aef5e23167ce2bc1d10">Raspberry Pi のGPIOをPythonから利用する</a>
@@ -27,28 +27,28 @@ except KeyboardInterrupt:<br>
 <br>
 <br>
 <h3>LEDを点灯させるプログラム C 用</h3><br>
-#include <stdio.h><br>
-#include <wiringPi.h><br>
+#include &lt;stdio.h&gt;<br>
+#include &lt;wiringPi.h&gt;<br>
 <br>
 int main(int argc, char** argv)<br>
 {<br>
-   // Intialize the wiringPi Library<br>
-    wiringPiSetup();<br>
+&emsp;// Intialize the wiringPi Library<br>
+&emsp;wiringPiSetup();<br>
 <br>
-    // Set the I/O state of the given pins<br>
-    pinMode(0, OUTPUT);<br>
-    pinMode(1, INPUT);<br>
-        
-    // Turn pin 0 on then off<br>
-    digitalWrite(0, HIGH);<br>
-    digitalWrite(0, LOW);<br>
-        
-    // Read input from pin 1<br>
-    int status = digitalRead(1);<br>
-    printf("Pin Input = %d\n", status);<br>
+&emsp;// Set the I/O state of the given pins<br>
+&emsp;pinMode(0, OUTPUT);<br>
+&emsp;pinMode(1, INPUT);<br>
+<br>      
+&emsp;// Turn pin 0 on then off<br>
+&emsp;digitalWrite(0, HIGH);<br>
+&emsp;digitalWrite(0, LOW);<br>
+<br>  
+&emsp;// Read input from pin 1<br>
+&emsp;int status = digitalRead(1);<br>
+&emsp;printf("Pin Input = %d\n", status);<br>
 <br>
-    // Exit program<br>
-    return 0;<br>
+&emsp;// Exit program<br>
+&emsp;return 0;<br>
 }<br>
 <br>
 参考<br>
